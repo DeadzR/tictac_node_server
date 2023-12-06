@@ -2,6 +2,9 @@ const express=require("express");
 const http=require("http");
 const mongoose = require("mongoose");
 const Room = require("./models/room");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const port=process.env.PORT||3000
 
@@ -17,10 +20,9 @@ app.use(express.json());
 
 
 
-const DB=process.env.MONGODB_CONNECT_URI;
+const DB=process.env.MONGODB;
 
-mongoose.connect(DB,{useNewUrlParser: true, 
-  useUnifiedTopology: true}).then(()=>{
+mongoose.connect(DB).then(()=>{
     console.log("succesfull.");
    
   
